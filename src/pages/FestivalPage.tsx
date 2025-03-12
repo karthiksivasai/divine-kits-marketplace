@@ -21,7 +21,7 @@ const FestivalPage = () => {
     {
       id: 1,
       title: 'Clean Your Home',
-      description: 'Begin your Diwali preparations by thoroughly cleaning your home. This symbolizes the removal of negative energy and the welcoming of prosperity. Pay special attention to areas where you'll be performing rituals and placing diyas. A clean and clutter-free environment helps create a sacred space for the divine to enter.',
+      description: 'Begin your Diwali preparations by thoroughly cleaning your home. This symbolizes the removal of negative energy and the welcoming of prosperity. Pay special attention to areas where you\'ll be performing rituals and placing diyas. A clean and clutter-free environment helps create a sacred space for the divine to enter.',
       image: 'https://images.unsplash.com/photo-1523575158218-e71a663a5caf?q=80&w=1024&auto=format&fit=crop'
     },
     {
