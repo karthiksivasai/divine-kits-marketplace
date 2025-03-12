@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 
@@ -21,14 +20,14 @@ const FeaturedProducts = () => {
     };
   }, []);
 
-  // Sample product data
+  // Sample product data with updated image URLs
   const products = [
     {
       id: '1',
       name: 'Deluxe Diwali Pooja Kit',
       price: 1899,
       originalPrice: 2499,
-      image: 'https://images.unsplash.com/photo-1604423082164-3c481c056aea?q=80&w=800&auto=format&fit=crop',
+      image: 'https://placehold.co/400x400/FFEED9/FF9933?text=Diwali+Kit&font=Poppins',
       rating: 4.9,
       reviewCount: 128,
       isNew: true,
@@ -39,7 +38,7 @@ const FeaturedProducts = () => {
       name: 'Navratri Special Kit',
       price: 1299,
       originalPrice: 1599,
-      image: 'https://images.unsplash.com/photo-1558180053-f059cae4b8c7?q=80&w=800&auto=format&fit=crop',
+      image: 'https://placehold.co/400x400/FFEED9/FF9933?text=Navratri+Kit&font=Poppins',
       rating: 4.7,
       reviewCount: 85,
       isNew: false,
@@ -50,7 +49,7 @@ const FeaturedProducts = () => {
       name: 'Ganesh Chaturthi Essentials',
       price: 999,
       originalPrice: 1299,
-      image: 'https://images.unsplash.com/photo-1571424461208-d9181e237ba9?q=80&w=800&auto=format&fit=crop',
+      image: 'https://placehold.co/400x400/FFEED9/FF9933?text=Ganesh+Kit&font=Poppins',
       rating: 4.8,
       reviewCount: 74,
       isNew: false,
@@ -61,7 +60,7 @@ const FeaturedProducts = () => {
       name: 'Daily Pooja Essentials',
       price: 699,
       originalPrice: null,
-      image: 'https://images.unsplash.com/photo-1527938767652-467bc70101da?q=80&w=800&auto=format&fit=crop',
+      image: 'https://placehold.co/400x400/FFEED9/FF9933?text=Pooja+Kit&font=Poppins',
       rating: 4.6,
       reviewCount: 92,
       isNew: false,

@@ -28,6 +28,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const discount = originalPrice ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
+  
+  // Fallback image to use when the original image fails to load
+  const fallbackImage = "https://placehold.co/400x400/F9F4F0/FF9933?text=Product&font=Poppins";
 
   return (
     <div 
@@ -37,12 +40,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
     >
       <div className="relative overflow-hidden rounded-xl transition-all duration-300 bg-white shadow-neuro hover:shadow-lg">
         {/* Product image with overlay */}
-        <div className="relative aspect-square overflow-hidden">
+        <div className="relative aspect-square overflow-hidden bg-gray-100">
           <Link to={`/product/${id}`}>
             <img 
               src={image} 
               alt={name} 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+              onError={(e) => {
+                console.log(`Image failed to load: ${image}`);
+                (e.target as HTMLImageElement).src = fallbackImage;
+                (e.target as HTMLImageElement).onerror = null; // Prevent infinite loops
+              }}
             />
           </Link>
           

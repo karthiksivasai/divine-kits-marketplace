@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ProductCard from './ProductCard';
@@ -23,14 +22,14 @@ const ShopRecommendations = () => {
     };
   }, []);
 
-  // Sample recommended products
+  // Sample recommended products with updated image URLs
   const recommendedProducts = [
     {
       id: '1',
       name: 'Deluxe Diwali Pooja Kit',
       price: 1899,
       originalPrice: 2499,
-      image: 'https://images.unsplash.com/photo-1604423082164-3c481c056aea?q=80&w=800&auto=format&fit=crop',
+      image: 'https://placehold.co/400x400/FFEED9/FF9933?text=Diwali+Kit&font=Poppins',
       rating: 4.9,
       reviewCount: 128,
       isNew: true,
@@ -41,7 +40,7 @@ const ShopRecommendations = () => {
       name: 'Handcrafted Brass Diya Set',
       price: 1499,
       originalPrice: 1899,
-      image: 'https://images.unsplash.com/photo-1634106612951-e2ca536a759c?q=80&w=800&auto=format&fit=crop',
+      image: 'https://placehold.co/400x400/FFEED9/FF9933?text=Diya+Set&font=Poppins',
       rating: 4.7,
       reviewCount: 68,
       isNew: true,
@@ -52,7 +51,7 @@ const ShopRecommendations = () => {
       name: 'Premium Sandalwood Incense',
       price: 499,
       originalPrice: null,
-      image: 'https://images.unsplash.com/photo-1549715089-838e7e9a36d6?q=80&w=800&auto=format&fit=crop',
+      image: 'https://placehold.co/400x400/FFEED9/FF9933?text=Incense&font=Poppins',
       rating: 4.8,
       reviewCount: 112,
       isNew: false,
@@ -63,7 +62,7 @@ const ShopRecommendations = () => {
       name: 'Silver Lakshmi Idol',
       price: 3499,
       originalPrice: 3999,
-      image: 'https://images.unsplash.com/photo-1624729495640-208d61b1d3cb?q=80&w=800&auto=format&fit=crop',
+      image: 'https://placehold.co/400x400/FFEED9/FF9933?text=Lakshmi+Idol&font=Poppins',
       rating: 4.9,
       reviewCount: 28,
       isNew: false,

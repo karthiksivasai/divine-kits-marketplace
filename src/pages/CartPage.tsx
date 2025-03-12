@@ -27,14 +27,14 @@ const CartPage = () => {
         id: '1',
         name: 'Deluxe Diwali Pooja Kit',
         price: 1899,
-        image: 'https://images.unsplash.com/photo-1604423082164-3c481c056aea?q=80&w=800&auto=format&fit=crop',
+        image: '/product-images/diwali-kit.jpg',
         quantity: 1
       },
       {
         id: '2',
         name: 'Brass Diya Set',
         price: 799,
-        image: 'https://images.unsplash.com/photo-1609142522365-a9b5dd1515e9?q=80&w=800&auto=format&fit=crop',
+        image: '/product-images/diya-set.jpg',
         quantity: 2
       }
     ];
@@ -64,6 +64,9 @@ const CartPage = () => {
   const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const shipping = subtotal > 0 ? 99 : 0;
   const total = subtotal + shipping;
+
+  // Fallback image to use when image fails to load
+  const fallbackImage = "https://placehold.co/300x300/F9F4F0/FF9933?text=Product&font=Poppins";
 
   return (
     <div className="min-h-screen">
@@ -96,14 +99,15 @@ const CartPage = () => {
                   <div className="space-y-6">
                     {cartItems.map(item => (
                       <div key={item.id} className="flex flex-col sm:flex-row gap-4 pb-6 border-b border-gray-200 last:border-b-0 last:pb-0">
-                        <div className="w-full sm:w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                        <div className="w-full sm:w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
                           <img 
                             src={item.image} 
                             alt={item.name} 
                             className="w-full h-full object-cover"
                             onError={(e) => {
-                              // Fallback image if the original fails to load
-                              (e.target as HTMLImageElement).src = 'https://placehold.co/200x200/F9F4F0/FF9933?text=Image&font=Poppins';
+                              console.log(`Image failed to load: ${item.image}`);
+                              (e.target as HTMLImageElement).src = fallbackImage;
+                              (e.target as HTMLImageElement).onerror = null; // Prevent infinite loops
                             }}
                           />
                         </div>
