@@ -47,7 +47,7 @@ const FestivalPage = () => {
       title: 'Offer Prasad and Aarti',
       description: 'Present homemade sweets and savory items as prasad (blessed food offerings). Perform aarti by circulating a lit camphor or ghee lamp clockwise around the deities while singing devotional songs. This signifies your devotion and gratitude. The sound of bells during aarti is believed to ward off negative energies and welcome divine blessings.',
       image: 'https://images.unsplash.com/photo-1593014159088-3e6d346a5070?q=80&w=1024&auto=format&fit=crop'
-    },
+    }
   ];
 
   return (
