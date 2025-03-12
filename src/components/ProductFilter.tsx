@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Slider } from "@/components/ui/slider";
@@ -36,7 +35,14 @@ const ProductFilter: React.FC<FilterProps> = ({ onFilterChange }) => {
   };
 
   const handlePriceChange = (value: number[]) => {
-    const newFilters = { ...filters, priceRange: [value[0], value[1]] as [number, number] };
+    // Ensure priceRange is always a tuple of exactly 2 elements
+    const priceRange: [number, number] = [value[0] || 0, value[1] || 5000];
+    
+    const newFilters = { 
+      ...filters, 
+      priceRange 
+    };
+    
     setFilters(newFilters);
     onFilterChange(newFilters);
   };
@@ -85,7 +91,7 @@ const ProductFilter: React.FC<FilterProps> = ({ onFilterChange }) => {
   };
 
   const clearFilters = () => {
-    const resetFilters = {
+    const resetFilters: FilterState = {
       priceRange: [0, 5000],
       categories: [],
       festivals: [],
