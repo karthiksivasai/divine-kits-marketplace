@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -56,9 +57,9 @@ const HeroSection = () => {
               <span>Explore Collections</span>
               <ChevronRight size={18} className="ml-1 animate-pulse-soft" />
             </button>
-            <button className="btn-outline border-white text-white hover:bg-white hover:text-charcoal">
-              Festival Guide
-            </button>
+            <Link to="/customize-kit" className="btn-outline border-white text-white hover:bg-white hover:text-charcoal inline-flex items-center justify-center">
+              Customize Your Kit
+            </Link>
           </div>
         </div>
         

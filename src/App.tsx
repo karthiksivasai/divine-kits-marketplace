@@ -11,6 +11,7 @@ import FestivalPage from "./pages/FestivalPage";
 import BlogPage from "./pages/BlogPage";
 import ContactPage from "./pages/ContactPage";
 import CartPage from "./pages/CartPage";
+import CustomizeKitPage from "./pages/CustomizeKitPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/customize-kit" element={<CustomizeKitPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
