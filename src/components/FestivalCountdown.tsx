@@ -1,5 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
+import { useFestival } from '../contexts/FestivalContext';
+import { Link } from 'react-router-dom';
 
 interface TimeLeft {
   days: number;
@@ -9,8 +11,13 @@ interface TimeLeft {
 }
 
 const FestivalCountdown = () => {
-  // Example target date: next Diwali
-  const targetDate = new Date('2023-11-12T00:00:00');
+  const { getNearestFestival } = useFestival();
+  const nearestFestival = getNearestFestival();
+  
+  // Fall back to a default date if no upcoming festivals
+  const targetDate = nearestFestival?.date || new Date('2023-11-12T00:00:00');
+  const festivalName = nearestFestival?.name || 'Festival of Lights';
+  
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -69,15 +76,33 @@ const FestivalCountdown = () => {
     return num < 10 ? `0${num}` : num;
   };
 
+  // Calculate progress percentage
+  const calculateProgress = () => {
+    if (!nearestFestival) return 65; // Default progress
+    
+    const now = new Date().getTime();
+    const festivalDate = nearestFestival.date.getTime();
+    
+    // Assuming announcement was roughly 3 months before
+    const announcementDate = new Date(nearestFestival.date);
+    announcementDate.setMonth(announcementDate.getMonth() - 3);
+    
+    const totalDuration = festivalDate - announcementDate.getTime();
+    const elapsed = now - announcementDate.getTime();
+    
+    const progress = Math.min(100, Math.max(0, (elapsed / totalDuration) * 100));
+    return progress;
+  };
+
   return (
     <section id="countdown-section" className="section-padding bg-gradient-to-r from-beige to-white">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className={`heading-lg mb-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Festival of Lights is Coming Soon
+            {festivalName} is Coming Soon
           </h2>
           <p className={`text-charcoal/70 max-w-2xl mx-auto transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Get your Diwali pooja kits before they sell out. Special offers end with the countdown.
+            Get your {festivalName} pooja kits before they sell out. Special offers end with the countdown.
           </p>
         </div>
         
@@ -124,8 +149,8 @@ const FestivalCountdown = () => {
           <div className="mt-12">
             <div className="h-3 bg-white shadow-neuro-sm rounded-full overflow-hidden">
               <div 
-                className="h-full bg-gradient-to-r from-saffron to-gold rounded-full"
-                style={{ width: '65%' }}
+                className="h-full bg-gradient-to-r from-saffron to-gold rounded-full transition-all duration-1000 ease-in-out"
+                style={{ width: `${calculateProgress()}%` }}
               ></div>
             </div>
             <div className="flex justify-between mt-2 text-sm text-charcoal/70">
@@ -137,7 +162,13 @@ const FestivalCountdown = () => {
           
           {/* Call to action */}
           <div className="mt-12 text-center">
-            <button className="btn-primary">Pre-Order Festival Kit</button>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <button className="btn-primary">Pre-Order Festival Kit</button>
+              {/* Admin link */}
+              <Link to="/admin/festivals" className="btn-outline">
+                Manage Festivals
+              </Link>
+            </div>
           </div>
         </div>
       </div>
