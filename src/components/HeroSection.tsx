@@ -19,7 +19,7 @@ const HeroSection = () => {
         ></div>
         <div className="spiritual-overlay"></div>
         <img 
-          src="https://images.unsplash.com/photo-1609601385606-d16dcc0db8d5?q=80&w=1800&auto=format&fit=crop" 
+          src="https://images.unsplash.com/photo-1600419992652-a247287cf0d7?q=80&w=1800&auto=format&fit=crop" 
           alt="Spiritual background" 
           className="w-full h-full object-cover"
           onError={(e) => {
