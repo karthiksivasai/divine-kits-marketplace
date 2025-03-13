@@ -14,13 +14,19 @@ const HeroSection = () => {
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 z-0">
         <div 
-          className="absolute inset-0 bg-gradient-to-r from-charcoal/70 to-charcoal/30"
+          className="absolute inset-0 bg-gradient-to-r from-charcoal/60 to-charcoal/30"
           style={{ mixBlendMode: 'multiply' }}
         ></div>
+        <div className="spiritual-overlay"></div>
         <img 
           src="https://images.unsplash.com/photo-1609601385606-d16dcc0db8d5?q=80&w=1800&auto=format&fit=crop" 
           alt="Spiritual background" 
           className="w-full h-full object-cover"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "https://placehold.co/1800x900/FFEED9/FF9933?text=Divine+Spiritual+Kits&font=Poppins";
+            console.log("Image failed to load, fallback applied");
+          }}
         />
       </div>
       
